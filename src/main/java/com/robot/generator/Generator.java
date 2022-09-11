@@ -28,7 +28,7 @@ public class Generator {
                             .pathInfo(Collections.singletonMap(OutputFile.mapperXml, "E:\\project\\QQ_Robot\\src\\main\\resources\\mapper")); // 设置mapperXml生成路径
                 })
                 .strategyConfig(builder -> {
-                    builder.addInclude("group");
+                    builder.addInclude("group_order");
 //                    builder.addInclude("commodity", "customer", "customer_shopping_cart", "shopping_cart");
 //                    builder.addInclude("order", "order_user");
 //                    builder.addInclude("user_menu");

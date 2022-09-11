@@ -28,15 +28,15 @@ public class KeyWordServiceImpl extends ServiceImpl<KeyWordMapper, KeyWord> impl
     }
 
     @Override
-    public KeyWord autoReplyAll(String keyWord) {
+    public KeyWord autoReplyEq(String keyWord) {
         LambdaQueryWrapper<KeyWord> wrapper = new LambdaQueryWrapper<>();
         wrapper.eq(KeyWord::getKeyWord, keyWord);
         return getOne(wrapper);
     }
 
     @Override
-    public String addAutoReplay(String msg) {
-        String[] split = msg.split("\\^");
+    public String addAutoReply(Object msg) {
+        String[] split = (String[]) msg;
         if (split.length != 5) {
             return "哎呦!怎么回事格式好像不对耶! -正确格式 ^addAutoReply^[全匹配 A|模糊匹配 L]^[关键字]^[回复词]";
         }
@@ -44,6 +44,7 @@ public class KeyWordServiceImpl extends ServiceImpl<KeyWordMapper, KeyWord> impl
         keyWord.setKeyWord(split[3]);
         keyWord.setReplyWord(split[4]);
         boolean save = save(keyWord);
+        //todo : 测试使用,上线后删除
         if (Objects.equals(split[2], "X")) {
             return "崽种!直视我 !这都能错 !!!";
         }

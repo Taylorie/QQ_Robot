@@ -42,6 +42,8 @@ public class SpringContextUtils implements ApplicationContextAware {
      * @return Object bean的实例对象
      */
     public static Object getBean(String name) throws BeansException {
-        return applicationContext.getBean(name);
+        char[] chars = name.toCharArray();
+        chars[0]=Character.toLowerCase(chars[0]);
+        return applicationContext.getBean(String.valueOf(chars));
     }
 }

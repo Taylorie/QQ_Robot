@@ -20,7 +20,7 @@ public interface IKeyWordService extends IService<KeyWord> {
      */
     KeyWord autoReplyLike(String keyWord);
 
-    KeyWord autoReplyAll(String keyWord);
+    KeyWord autoReplyEq(String keyWord);
 
     /**
      * 自定义回复
@@ -28,5 +28,5 @@ public interface IKeyWordService extends IService<KeyWord> {
      * @param msg
      * @return
      */
-    String addAutoReplay(String msg);
+    String addAutoReply(Object msg);
 }

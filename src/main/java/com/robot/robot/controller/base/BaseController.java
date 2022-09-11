@@ -11,7 +11,8 @@ import love.forte.simbot.api.message.events.MessageGet;
 import love.forte.simbot.api.sender.Sender;
 import love.forte.simbot.api.sender.Setter;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Controller;
+
+import java.lang.reflect.InvocationTargetException;
 
 /**
  * @autcom zhang.yu
@@ -26,7 +27,7 @@ public class BaseController {
     @Autowired
     IKeyWordService keyWordService;
 
-    public void entrance(GroupMsg groupMsg, MessageContentBuilder msgBuilder, Setter setter, Sender sender) {
+    public void entrance(GroupMsg groupMsg, MessageContentBuilder msgBuilder, Setter setter, Sender sender) throws Exception {
         boolean sensitive = sensitive(groupMsg, msgBuilder, setter, sender);
         if (sensitive) return;
         autoReply(groupMsg, msgBuilder, setter, sender);
@@ -58,8 +59,8 @@ public class BaseController {
         return false;
     }
 
-    public void autoReply(GroupMsg groupMsg, MessageContentBuilder msgBuilder, Setter setter, Sender sender) {
-        KeyWord keyWord = keyWordService.autoReplyLike(groupMsg.getText());
+    public void autoReply(GroupMsg groupMsg, MessageContentBuilder msgBuilder, Setter setter, Sender sender) throws Exception {
+        KeyWord keyWord = keyWordService.autoReplyEq(groupMsg.getText());
         if (keyWord != null) {
             MessageContent msg = msgBuilder
                     // at当事人
