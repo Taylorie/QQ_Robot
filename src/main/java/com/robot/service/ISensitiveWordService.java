@@ -3,6 +3,8 @@ package com.robot.service;
 import com.baomidou.mybatisplus.extension.service.IService;
 import com.robot.entity.SensitiveWord;
 
+import java.util.List;
+
 /**
  * <p>
  * 服务类
@@ -19,4 +21,17 @@ public interface ISensitiveWordService extends IService<SensitiveWord> {
      * @return
      */
     SensitiveWord checkSensiWord(String sensiWord);
+
+    /**
+     * @param str
+     * @return
+     */
+    Boolean addSensi(List<String> str);
+
+    /**
+     * 生成敏感词数据
+     *
+     * @return
+     */
+    Boolean generTrie();
 }

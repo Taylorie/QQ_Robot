@@ -11,7 +11,6 @@ import love.forte.simbot.api.sender.Setter;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
-import java.lang.reflect.InvocationTargetException;
 
 /**
  * @author zhang.yu
